@@ -1,0 +1,87 @@
+﻿@model JOBSEARCHPORTAL.Models.CompanyRegclass
+@{
+    ViewBag.Title = "Company Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Registration</h2>
+
+@* Check for Success message from TempData *@
+@if (TempData["Success"] != null)
+{
+    <script type="text/javascript">
+        alert('@TempData["Success"]');
+    </script>
+}
+
+<!-- Form to add company details -->
+@using (Html.BeginForm("Insertcompany_Click", "CompanyReg", FormMethod.Post))
+{
+    <div>
+        <label>Company Name:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.CompanyName)
+        @Html.ValidationMessageFor(m => m.CompanyName)
+    </div>
+
+    <div>
+        <label>Company Address:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.CompanyAddress)
+        @Html.ValidationMessageFor(m => m.CompanyAddress)
+    </div>
+
+    <div>
+        <label>Company Email:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.CompanyEmail)
+        @Html.ValidationMessageFor(m => m.CompanyEmail)
+    </div>
+
+    <div>
+        <label>Company Website:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.CompanyWebsite)
+        @Html.ValidationMessageFor(m => m.CompanyWebsite)
+    </div>
+
+    <div>
+        <label>Phone:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Company_Phone)
+        @Html.ValidationMessageFor(m => m.Company_Phone)
+    </div>
+
+    <div>
+        <label>Username:</label>
+    </div>
+    <div>
+        @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div>
+        <label>Password:</label>
+    </div>
+    <div>
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+
+    <div>
+        <label>Confirm Password:</label>
+    </div>
+    <div>
+        @Html.PasswordFor(m => m.CPassword)
+        @Html.ValidationMessageFor(m => m.CPassword)
+    </div>
+
+    <div>
+        <input type="submit" value="Register" />
+    </div>
+}

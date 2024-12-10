@@ -1,0 +1,136 @@
+﻿@model JOBSEARCHPORTAL.Models.UserRegclass
+@{
+    ViewBag.Title = "Insertuser_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Registration</h2>
+
+@* Check for Success message from TempData *@
+@if (TempData["Success"] != null)
+{
+    <script type="text/javascript">
+        alert('@TempData["Success"]');
+    </script>
+}
+
+<div>
+    @using (Html.BeginForm("Insertuser_Click", "UserReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Age)
+            @Html.ValidationMessageFor(m => m.Age)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.Address)
+            @Html.ValidationMessageFor(m => m.Address)
+        </div>
+
+        <div>
+            <label>Phone:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Phone)
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Skills)
+            @Html.ValidationMessageFor(m => m.Skills)
+        </div>
+
+        <div>
+            <label>Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Experience)
+            @Html.ValidationMessageFor(m => m.Experience)
+        </div>
+
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Location)
+            @Html.ValidationMessageFor(m => m.Location)
+        </div>
+
+        <div>
+            <label>Photo:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Qualification)
+            @Html.ValidationMessageFor(m => m.Qualification)
+        </div>
+
+        <div>
+            <label>Job Preferences:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Preferences)
+            @Html.ValidationMessageFor(m => m.Preferences)
+        </div>
+
+        <div>
+            <label>Username:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Username)
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.CPassword)
+            @Html.ValidationMessageFor(m => m.CPassword)
+        </div>
+
+        <div></div>
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+    }
+</div>

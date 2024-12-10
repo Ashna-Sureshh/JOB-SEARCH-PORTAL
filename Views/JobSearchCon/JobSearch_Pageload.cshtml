@@ -1,0 +1,85 @@
+﻿@model JOBSEARCHPORTAL.Models.JobSearchClass
+
+@{
+    ViewBag.Title = "Job Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Job Search</h1>
+
+<div>
+    @using (Html.BeginForm("searchjob_click", "JobSearchCon", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td><label>Skills:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.JobSkills, new { @class = "form-control", placeholder = "Enter Skills" })</td>
+                <td><label>Experience:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.JobExperience, new { @class = "form-control", placeholder = "Enter Experience" })</td>
+                <td><label>Location:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.JobLocation, new { @class = "form-control", placeholder = "Enter Location" })</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Search" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+    }
+</div>
+
+<div>
+    @using (Html.BeginForm("JobSearch_Pageload", "JobSearchCon", FormMethod.Get))
+    {
+        if (Model != null)
+        {
+            if (Model.selectjob != null && Model.selectjob.Count != 0)
+            {
+        <table class="table table-bordered">
+            <tr></tr>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Job Title</th>
+                    <th>Skills</th>
+                    <th>Experience</th>
+                    <th>Location</th>
+                    <th>Salary Range</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+           
+           
+                @foreach (var item in Model.selectjob)
+                {
+                    <tr>
+                        <td>@item.CompanyId</td>
+                        <td>@item.JobTitle</td>
+                        <td>@item.JobSkills</td>
+                        <td>@item.JobExperience</td>
+                        <td>@item.JobLocation</td>
+                        <td>@item.JobSalaryRange</td>
+                        <td>@item.JobEndDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.JobStatus</td>
+                        <td>
+                            @Html.ActionLink("Apply Now", "ApplyCV_Load", "Applyjob",
+                          new { jid = item.JobId }, null)
+                        </td>
+                    </tr>
+                }
+            
+        </table>
+            }
+            else
+            {
+    <script>
+        alert(' No data found ');
+    </script>
+            }
+        }
+    }
+
+
+
+<div style="margin-top: 20px;">
+    @Html.ActionLink("Back to Home Page", "UserHome", "Login")
+</div>
+</div>

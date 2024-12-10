@@ -1,0 +1,82 @@
+﻿@model JOBSEARCHPORTAL.Models.Jobclass
+@{
+    ViewBag.Title = "InsertJob_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Job</h2>
+
+@using (Html.BeginForm("InsertJob_Click", "Jobadd", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Job Title:</label>
+        @Html.TextBoxFor(m => m.JobTitle)
+        @Html.ValidationMessageFor(m => m.JobTitle)
+    </div>
+
+    <div>
+        <label>Job Description:</label>
+        @Html.TextBoxFor(m => m.JobDescription)
+        @Html.ValidationMessageFor(m => m.JobDescription)
+    </div>
+
+    <div>
+        <label>Job Skills:</label>
+        @Html.TextBoxFor(m => m.JobSkills)
+        @Html.ValidationMessageFor(m => m.JobSkills)
+    </div>
+
+    <div>
+        <label>Job Experience:</label>
+        @Html.TextBoxFor(m => m.JobExperience)
+        @Html.ValidationMessageFor(m => m.JobExperience)
+    </div>
+
+    <div>
+        <label>Job Type:</label>
+        @Html.TextBoxFor(m => m.JobType)
+        @Html.ValidationMessageFor(m => m.JobType)
+    </div>
+
+    <div>
+        <label>Job Work Mode:</label>
+        @Html.TextBoxFor(m => m.JobWorkMode)
+        @Html.ValidationMessageFor(m => m.JobWorkMode)
+    </div>
+
+    <div>
+        <label>Job Location:</label>
+        @Html.TextBoxFor(m => m.JobLocation)
+        @Html.ValidationMessageFor(m => m.JobLocation)
+    </div>
+
+    <div>
+        <label>Job Salary Range:</label>
+        @Html.TextBoxFor(m => m.JobSalaryRange)
+        @Html.ValidationMessageFor(m => m.JobSalaryRange)
+    </div>
+
+    <div>
+        <label>Job End Date:</label>
+        @Html.TextBoxFor(m => m.JobEndDate, new { type = "date" })
+        @Html.ValidationMessageFor(m => m.JobEndDate)
+    </div>
+
+    <div>
+        <label>Job Status:</label>
+        @Html.TextBoxFor(m => m.JobStatus)
+        @Html.ValidationMessageFor(m => m.JobStatus)
+    </div>
+
+    <div>
+        <input type="submit" value="Add Job" />
+    </div>
+
+    <div>
+        @Html.DisplayFor(m => m.Msg)
+    </div>
+}
+
+

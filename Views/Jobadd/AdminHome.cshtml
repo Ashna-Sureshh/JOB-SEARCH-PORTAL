@@ -1,0 +1,97 @@
+﻿@model JOBSEARCHPORTAL.Models.Jobclass
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Vaccancy</h2>
+
+
+<div>
+    @using (Html.BeginForm("InsertJob_Click", "JobAdd", FormMethod.Post))
+    {
+        <div>
+            <label>Job Title:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobTitle)
+            @Html.ValidationMessageFor(m => m.JobTitle)
+        </div>
+
+        <div>
+            <label>Job Description:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.JobDescription)
+            @Html.ValidationMessageFor(m => m.JobDescription)
+        </div>
+
+        <div>
+            <label>Job Skills:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobSkills)
+            @Html.ValidationMessageFor(m => m.JobSkills)
+        </div>
+
+        <div>
+            <label>Job Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobExperience)
+            @Html.ValidationMessageFor(m => m.JobExperience)
+        </div>
+
+        <div>
+            <label>Job Type:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobType)
+            @Html.ValidationMessageFor(m => m.JobType)
+        </div>
+
+        <div>
+            <label>Work Mode:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobWorkMode)
+            @Html.ValidationMessageFor(m => m.JobWorkMode)
+        </div>
+
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobLocation)
+            @Html.ValidationMessageFor(m => m.JobLocation)
+        </div>
+
+        <div>
+            <label>Salary Range:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobSalaryRange)
+            @Html.ValidationMessageFor(m => m.JobSalaryRange)
+        </div>
+
+        <div>
+            <label>End Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.JobEndDate, new { type = "date" })
+            @Html.ValidationMessageFor(m => m.JobEndDate)
+        </div>
+
+        <!-- Hidden field for Job Status -->
+        @Html.HiddenFor(m => m.JobStatus, new { Value = "Open" })
+
+        <div>
+            <input type="submit" value="Add Job" />
+            @Html.DisplayFor(m => m.Msg)
+        </div>
+    }
+
+    <div style="margin-top: 20px;">
+        @Html.ActionLink("Back to Home Page", "AdminHome", "Login")
+    </div>
+</div>
